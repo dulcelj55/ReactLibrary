@@ -1,0 +1,9 @@
+*{
+  box-sizing: border-box;
+}
+#sidebar{
+  background-color: lightblue;
+}
+.page-container{
+  background-color: lightgray;
+}

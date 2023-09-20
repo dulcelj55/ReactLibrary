@@ -1,0 +1,15 @@
+#sidebar{
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+    padding-left: 20px;
+    background-color: lightcyan;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+}

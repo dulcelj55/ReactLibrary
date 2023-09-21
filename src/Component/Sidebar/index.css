@@ -6,10 +6,24 @@
     justify-content: flex-start;
     align-items: baseline;
     padding-left: 20px;
-    background-color: lightcyan;
+    background-color: lightcoral;
 }
 
 body{
     margin: 0;
     min-height: 100vh;
+}
+button{
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 8px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    
+    cursor: pointer;
+    transition: border-color 0.25s;
+}
+button:hoover{
+    border-color: #646cff;
 }

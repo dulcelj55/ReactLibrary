@@ -1,13 +1,16 @@
-import React from "react";
+import "./index.css"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const NewBook = (books, setBooks) => {
+const NewBook = ({books, setBooks}) => {
     const[title, setTitle]=useState("")
     const[author, setAuthor]=useState("")
     const[pages, setPages]=useState(0)
+    const[submitSuccess, setSubmitSuccess]= useState(false)
 
     const handleTitleChange= (e)=>{
         setTitle(e.target.value);
+        setSubmitSuccess(false)
     } 
     const handleAuthorChange= (e)=>{
         setAuthor(e.target.value);
@@ -16,14 +19,36 @@ const NewBook = (books, setBooks) => {
         if (e.target.value > 0){
         setPages(e.target.value);
     }} 
+
+    function generateID(length = 10) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      let result = '';
+      for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+      }
+      return result;
+      }
+
+
+
+
+
+
     const handleSubmit= (e)=>{
          e.preventDefault()
-        console.log("it")
-        setAuthor([...books,{title, author, pages}])
+    let newBooksArray= [ ...books,{title: title, author: author, pages: pages, id:generateID()}]   
+    localStorage.setItem('books', JSON.stringify(newBooksArray))    
+    setBooks(newBooksArray)
+        setTitle("")
+        setAuthor("")
+        setPages(1)
+        setSubmitSuccess(true)
+       
     } 
 
   return (
     <div className="page-container">
+        {submitSuccess ? <p style={{color: "green"}}>Your book was submitted!</p> : <></>}
       <h2>Enter a new book</h2>
 <form className="flex-form" onSubmit={handleSubmit}>
       <label htmlFor="title"> Title </label>
